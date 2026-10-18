@@ -1,0 +1,17 @@
+one:
+  content: first comment
+  user: one
+  post: one
+  ancestry: /
+
+with_comments:
+  content: this is comment with comments
+  user: one
+  post: one
+  ancestry: /
+
+nested:
+  content: commented comment
+  user: two
+  post: one
+  ancestry: /<%= ActiveRecord::FixtureSet.identify(:with_comments) %>/

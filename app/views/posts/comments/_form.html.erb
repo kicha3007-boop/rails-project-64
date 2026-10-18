@@ -1,0 +1,8 @@
+<%= form_with model: comment, url: post_comments_path(post), class: "mb-6 space-y-3" do |f| %>
+  <%= f.hidden_field :parent_id %>
+  <div>
+    <%= f.label :content, class: "mb-1 block font-medium" %>
+    <%= f.text_area :content, rows: 3, class: "w-full rounded border border-gray-300 px-3 py-2" %>
+  </div>
+  <%= f.submit t(".submit"), class: "cursor-pointer rounded bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500" %>
+<% end %>

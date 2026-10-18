@@ -1,0 +1,30 @@
+<% content_for :title, t(".title") %>
+
+<h1 class="mb-6 text-3xl font-bold"><%= t(".title") %></h1>
+
+<%= form_with model: @post, class: "space-y-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm" do |f| %>
+  <% if @post.errors.any? %>
+    <ul class="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :title, class: "mb-1 block font-medium" %>
+    <%= f.text_field :title, class: "w-full rounded border border-gray-300 px-3 py-2" %>
+  </div>
+
+  <div>
+    <%= f.label :body, class: "mb-1 block font-medium" %>
+    <%= f.text_area :body, rows: 10, class: "w-full rounded border border-gray-300 px-3 py-2" %>
+  </div>
+
+  <div>
+    <%= f.label :category_id, class: "mb-1 block font-medium" %>
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, { include_blank: true }, class: "w-full rounded border border-gray-300 px-3 py-2" %>
+  </div>
+
+  <%= f.submit t(".submit"), class: "cursor-pointer rounded bg-indigo-600 px-4 py-2 font-medium text-white hover:bg-indigo-500" %>
+<% end %>

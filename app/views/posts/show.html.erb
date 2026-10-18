@@ -1,0 +1,37 @@
+<% content_for :title, @post.title %>
+
+<article class="mb-8 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+  <h1 class="mb-2 text-3xl font-bold"><%= @post.title %></h1>
+  <div class="mb-6 flex gap-4 text-sm text-gray-500">
+    <span><%= @post.category.name %></span>
+    <span><%= @post.creator.email %></span>
+    <span><%= l(@post.created_at, format: :short) %></span>
+  </div>
+
+  <div class="mb-6 text-gray-800"><%= simple_format(@post.body) %></div>
+
+  <div class="flex items-center gap-3">
+    <% if user_signed_in? %>
+      <% if @like %>
+        <%= button_to post_like_path(@post, @like), method: :delete, aria: { label: t(".like") }, class: "cursor-pointer text-2xl text-red-500" do %>
+          &#9829;
+        <% end %>
+      <% else %>
+        <%= button_to post_likes_path(@post), aria: { label: t(".like") }, class: "cursor-pointer text-2xl text-gray-400 hover:text-red-500" do %>
+          &#9825;
+        <% end %>
+      <% end %>
+    <% end %>
+    <span class="text-sm text-gray-600"><%= t(".likes_count", count: @post.likes.count) %></span>
+  </div>
+</article>
+
+<section>
+  <h2 class="mb-4 text-2xl font-semibold"><%= t(".comments") %></h2>
+
+  <% if user_signed_in? %>
+    <%= render "posts/comments/form", post: @post, comment: @comment %>
+  <% end %>
+
+  <%= render "posts/comments/tree", comments: @comments %>
+</section>

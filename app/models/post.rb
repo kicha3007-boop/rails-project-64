@@ -1,0 +1,10 @@
+class Post < ApplicationRecord
+  belongs_to :category
+  belongs_to :creator, class_name: "User", inverse_of: :posts
+
+  has_many :comments, class_name: "PostComment", dependent: :destroy, inverse_of: :post
+  has_many :likes, class_name: "PostLike", dependent: :destroy, inverse_of: :post
+
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :body, presence: true, length: { minimum: 200, maximum: 4000 }
+end

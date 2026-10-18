@@ -9,7 +9,7 @@ start:
 
 lint:
 	bundle exec rubocop
-	bundle exec herb-lint app/views
+	npx -y @herb-tools/linter app/views
 
 test:
 	bin/rails test

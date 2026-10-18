@@ -1,0 +1,64 @@
+ru:
+  activerecord:
+    models:
+      category: Категория
+      post: Пост
+      post_comment: Комментарий
+      post_like: Лайк
+      user: Пользователь
+    attributes:
+      category:
+        name: Название
+      post:
+        title: Заголовок
+        body: Содержание
+        category: Категория
+        category_id: Категория
+        creator: Автор
+      post_comment:
+        content: Тело комментария
+      user:
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        remember_me: Запомнить меня
+  devise:
+    registrations:
+      new:
+        sign_up: Регистрация
+    sessions:
+      new:
+        sign_in: Войти
+  layouts:
+    application:
+      title: Коллективный блог
+      footer: "© %{year} Коллективный блог — учебный проект Хекслета"
+    shared:
+      nav:
+        brand: Коллективный блог
+        new_post: Новый пост
+        sign_in: Войти
+        sign_up: Зарегистрироваться
+        sign_out: Выйти
+  posts:
+    index:
+      title: Свежие посты
+      empty: Постов пока нет
+    new:
+      title: Новый пост
+      submit: Опубликовать
+    create:
+      success: Пост опубликован
+    show:
+      like: Лайк
+      comments: Комментарии
+      likes_count:
+        one: "Понравилось: %{count}"
+        few: "Понравилось: %{count}"
+        many: "Понравилось: %{count}"
+        other: "Понравилось: %{count}"
+    comments:
+      form:
+        submit: Оставить комментарий
+      create:
+        success: Комментарий добавлен

@@ -1,0 +1,11 @@
+one:
+  title: Первый пост
+  body: <%= "Текст поста. " * 20 %>
+  category: development
+  creator: one
+
+two:
+  title: Второй пост
+  body: <%= "Другой текст. " * 20 %>
+  category: design
+  creator: two

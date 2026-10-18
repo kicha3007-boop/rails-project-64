@@ -1,0 +1,23 @@
+<% content_for :title, t(".title") %>
+
+<h1 class="mb-6 text-3xl font-bold"><%= t(".title") %></h1>
+
+<% if @posts.empty? %>
+  <p class="text-gray-500"><%= t(".empty") %></p>
+<% else %>
+  <div class="space-y-4">
+    <% @posts.each do |post| %>
+      <article class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+        <h2 class="mb-2 text-xl font-semibold">
+          <%= link_to post.title, post_path(post), class: "hover:text-indigo-600" %>
+        </h2>
+        <p class="mb-3 text-gray-700"><%= truncate(post.body, length: 200) %></p>
+        <div class="flex gap-4 text-sm text-gray-500">
+          <span><%= post.category.name %></span>
+          <span><%= post.creator.email %></span>
+          <span><%= l(post.created_at, format: :short) %></span>
+        </div>
+      </article>
+    <% end %>
+  </div>
+<% end %>
